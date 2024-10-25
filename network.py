@@ -19,7 +19,8 @@ class Network(object):
         """Trains the neutral network using minibatch stochastic gradient descent.
         Training data is a list of tuples (x,y) containing training inputs and 
         desired outputs"""
-        if test_data: n_test = len(test_data)
+        if test_data: 
+            n_test = len(test_data)
         n = len(training_data)
         for j in range(epochs):
             random.shuffle(training_data)
@@ -67,7 +68,7 @@ class Network(object):
             sp = sigmoid_prime(z)
             delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
             nabla_b[-l] = delta
-            nabla_w[-l] = np.dot(delta, activations[-l-1].tranpose())
+            nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
         return (nabla_b, nabla_w)
 
     def evaluate(self,test_data):
